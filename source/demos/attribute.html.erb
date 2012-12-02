@@ -1,0 +1,82 @@
+<% content_for :navigation do %>
+  <%= link_to "Examples", "../docs-and-demos.html#examples" %>
+<% end %>
+
+<% content_for :css do %>
+  <style>
+    .webbies {
+      overflow: hidden;
+    }
+    .webbies li {
+      display: block;
+      float: left;
+    }
+  </style>
+<% end %>
+
+<h2 class="splitter">Advanced: Custom attribute function</h2>
+
+<div class="demo">
+
+  <p id="load-webbies">
+    <a href="http://www.happywebbies.com/">Webbies</a>: 
+    <%= link_to "Brits", "ajax-brits.html", class: "button" %>
+    <%= link_to "Developers", "ajax-developers.html", class: "button" %>
+    <%= link_to "Westerners", "ajax-westerners.html", class: "button" %>
+    <%= link_to "Designers", "ajax-designers.html", class: "button" %>
+    <%= link_to "Legends", "ajax-legends.html", class: "button" %>
+  </p>
+
+  <ul class="webbies">
+    <li data-id="ab"><%= image_tag "webby-andy-budd.png", width: 110, height: 110 %></li>
+    <li data-id="ac"><%= image_tag "webby-andy-clarke.png", width: 110, height: 110 %></li>
+    <li data-id="db"><%= image_tag "webby-dan-benjamin.png", width: 110, height: 110 %></li>
+    <li data-id="dc"><%= image_tag "webby-dan-cederholm.png", width: 110, height: 110 %></li>
+    <li data-id="dr"><%= image_tag "webby-dan-rubin.png", width: 110, height: 110 %></li>
+    <li data-id="ds"><%= image_tag "webby-dave-shea.png", width: 110, height: 110 %></li>
+    <li data-id="dbw"><%= image_tag "webby-doug-bowman.png", width: 110, height: 110 %></li>
+    <li data-id="em"><%= image_tag "webby-eric-meyer.png", width: 110, height: 110 %></li>
+    <li data-id="jz"><%= image_tag "webby-jeffrey-zeldman.png", width: 110, height: 110 %></li>
+    <li data-id="jk"><%= image_tag "webby-jeremy-keith.png", width: 110, height: 110 %></li>
+    <li data-id="jh"><%= image_tag "webby-jon-hicks.png", width: 110, height: 110 %></li>
+    <li data-id="js"><%= image_tag "webby-jonathan-snook.png", width: 110, height: 110 %></li>
+    <li data-id="si"><%= image_tag "webby-shaun-inman.png", width: 110, height: 110 %></li>
+    <li data-id="vd"><%= image_tag "webby-veerle-duoh.png", width: 110, height: 110 %></li>
+  </ul>
+</div>
+
+<h2 class="splitter">JavaScript</h2>
+<% code "javascript" do %>
+$(function() {
+  $('#load-webbies a.button').click(function(e) {
+    $.get( $(this).attr('href'), function(data) {
+      $('.webbies').quicksand( $(data).find('li'),
+        {
+          adjustHeight: 'dynamic',
+          attribute: function(v) {
+            return $(v).find('img').attr('src');
+          }
+        });
+    });	
+  e.preventDefault();	
+  });
+});
+<% end %> 
+
+<script type="text/javascript">
+
+$(function() {
+  $('#load-webbies a.button').click(function(e) {
+    $.get( $(this).attr('href'), function(data) {
+      $('.webbies').quicksand( $(data).find('li'),
+        {
+          adjustHeight: 'dynamic',
+          attribute: function(v) {
+            return $(v).find('img').attr('src');
+          }
+        });
+    });	
+  e.preventDefault();	
+  });
+});
+</script>

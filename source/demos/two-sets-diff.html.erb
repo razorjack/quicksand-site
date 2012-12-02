@@ -1,0 +1,61 @@
+<% content_for :navigation do %>
+  <%= link_to "Examples", "../docs-and-demos.html#examples" %>
+<% end %>
+
+<h2 class="splitter">Two different sets of HTML</h2>
+
+<div class="demo">
+
+  <p><a class="button" href="#dummy">Apples to oranges</a></p>
+
+  <ul id="source">
+    <li data-id="anto">Antonovka</li>
+    <li data-id="jonat">Jonathan</li>
+    <li data-id="mac">McIntosh</li>
+  </ul>
+
+  <ul id="destination" style="display: none">
+    <li data-id="blood">Blood orange</li>
+    <li data-id="pers">Persian orange</li>
+    <li data-id="valen">Valencia orange</li>
+  </ul>
+
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('.button').click(function(e) {
+      $('#source').quicksand( $('#destination li') );
+      e.preventDefault();
+    });
+  });
+</script>
+
+<h2 class="splitter">JavaScript</h2>
+
+<% code "javascript" do %>
+$(function() {
+  $('.button').click(function(e) {
+    $('#source').quicksand( $('#destination li') );
+    e.preventDefault();
+  })
+});
+<% end %>
+
+<h2 class="splitter">HTML</h2>
+
+<% code "html" do %>
+<p><a class="button" href="#dummy">Apples to oranges</a></p>
+
+<ul id="source">
+  <li data-id="anto">Antonovka</li>
+  <li data-id="jonat">Jonathan</li>
+  <li data-id="mac">McIntosh</li>
+</ul>
+
+<ul id="destination" style="display: none">
+  <li data-id="blood">Blood orange</li>
+  <li data-id="pers">Persian orange</li>
+  <li data-id="valen">Valencia orange</li>
+</ul>
+<% end %>

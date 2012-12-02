@@ -1,0 +1,99 @@
+<% content_for :js do %>
+  <%= javascript_include_tag "main" %>
+<% end %>
+
+
+<!-- this isn’t part of the plugin, just a control for demo -->
+<ul class="splitter"><li>Filter by type:<ul><li class="segment-1 selected-1"><a href="#" data-value="all">Everything</a></li><li class="segment-0"><a href="#" data-value="app">Applications</a></li><li class="segment-2"><a href="#" data-value="util">Utilities</a></li></ul></li><li>Sort by:<ul><li class="segment-1 selected-1"><a href="#" data-value="name">Name</a></li><li class="segment-2"><a href="#" data-value="size">Size</a></li></ul></li></ul>
+
+<div class="demo">
+  <!-- read the documentation to understand what’s going on here -->
+  <ul id="list" class="image-grid">
+    <li data-id="id-1" class="util">
+      <%= image_tag "activity-monitor.png", width: 128, height: 128 %>
+      <strong>Activity Monitor</strong>
+      <span>348 KB</span>
+    </li>
+    <li data-id="id-2" class="app">
+      <%= image_tag "address-book.png", width: 128, height: 128 %>
+      <strong>Address Book</strong><span>1904 KB</span>
+    </li>
+    <li data-id="id-3" class="app">
+      <%= image_tag "finder.png", width: 128, height: 128 %>
+      <strong>Finder</strong>
+      <span>1337 KB</span>
+    </li>
+    <li data-id="id-4" class="app">
+      <%= image_tag "front-row.png", width: 128, height: 128 %>
+      <strong>Front Row</strong>
+      <span>401 KB</span>
+    </li>
+    <li data-id="id-5" class="app">
+      <%= image_tag "google-pokemon.png", width: 128, height: 128 %>
+      <strong>Google Pokémon</strong>
+      <span>12875 KB</span>
+    </li>
+    <li data-id="id-6" class="app">
+      <%= image_tag "ical.png", width: 128, height: 128 %>
+      <strong>iCal</strong>
+      <span>5273 KB</span>
+    </li>
+    <li data-id="id-7" class="app">
+      <%= image_tag "ichat.png", width: 128, height: 128 %>
+      <strong>iChat</strong>
+      <span>5437 KB</span>
+    </li>
+    <li data-id="id-8" class="app">
+      <%= image_tag "interface-builder.png", width: 128, height: 128 %>
+      <strong>Interface Builder</strong>
+      <span>2764 KB</span>
+    </li>
+    <li data-id="id-9" class="app">
+      <%= image_tag "ituna.png", width: 128, height: 128 %>
+      <strong>iTuna</strong>
+      <span>17612 KB</span>
+    </li>
+    <li data-id="id-10" class="util">
+      <%= image_tag "keychain-access.png", width: 128, height: 128 %>
+      <strong>Keychain Access</strong>
+      <span>972 KB</span>
+    </li>
+    <li data-id="id-11" class="util">
+      <%= image_tag "network-utility.png", width: 128, height: 128 %>
+      <strong>Network Utility</strong>
+      <span>245 KB</span>
+    </li>
+    <li data-id="id-12" class="util">
+      <%= image_tag "sync.png", width: 128, height: 128 %>
+      <strong>Sync</strong>
+      <span>3788 KB</span>
+    </li>
+    <li data-id="id-13" class="app">
+      <%= image_tag "textedit.png", width: 128, height: 128 %>
+      <strong>TextEdit</strong>
+      <span>1669 KB</span>
+    </li>
+  </ul>
+</div>
+
+<p id="performance-toggle">Demo seems sluggish? <a href="#toggle">Disable CSS3 scaling</a> and try again.</p>
+
+<p class="splitter">Isn’t it cool? Now, choose your fighter:</p>
+
+<div class="actions">
+  <p>
+    <a class="download" href="https://github.com/razorjack/quicksand/raw/master/jquery.quicksand.js">
+      <strong>Download</strong>
+      <span>Version <span class="version">1.2.2</span></span>
+    </a>
+  </p>
+  <p>
+    <%= link_to "<strong>Demos &amp; Docs</strong>", "docs-and-demos.html", class: "demos-n-docs" %>
+    </a>
+  </p>
+  <p>
+    <a class="fork" href="http://github.com/razorjack/quicksand/">
+      <strong>Fork on GitHub</strong>
+    </a>
+  </p>
+</div>

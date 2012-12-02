@@ -1,0 +1,140 @@
+<% content_for :navigation do %>
+  <%= link_to "Examples", "../docs-and-demos.html#examples" %>
+<% end %>
+
+<% content_for :css do %>
+    <style>
+      .demo .colors {
+        overflow: hidden;
+        margin: 20px 0;
+        padding-left: 55px;
+      }
+      
+      .demo .colors li {
+        display: block;
+        width: 96px;
+        height: 96px;
+        margin: 10px;
+        float: left;
+        border: 16px solid rgba(0,0,0,0.2);
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+      }
+      
+      .demo .warm {
+        display: none;
+      }
+    </style>
+<% end %>
+
+<h2 class="splitter">Two sets of HTML with overlapping elements</h2>
+
+<div class="demo">
+
+  <p><a class="button" href="#dummy">More warmth!</a></p>
+
+  <ul class="colors all">
+    <li id="c463033" style="background: #463033"></li>
+    <li id="c77343d" style="background: #77343d"></li>
+    <li id="ce83f2f" style="background: #e83f2f"></li>
+    <li id="cffc223" style="background: #ffc223"></li>
+    <li id="cffdb59" style="background: #ffdb59"></li>
+    <li id="c788b6f" style="background: #788b6f"></li>
+    <li id="c486a5e" style="background: #486a5e"></li>
+    <li id="c289539" style="background: #289539"></li>
+    <li id="c174876" style="background: #174876"></li>
+  </ul>
+
+  <ul class="colors warm">
+    <li id="c62164e" style="background: #62164e"></li>
+    <li id="c86286e" style="background: #86286e"></li>
+    <li id="cda79c2" style="background: #da79c2"></li>
+    <li id="ce83f2f" style="background: #e83f2f"></li>
+    <li id="cf39079" style="background: #f39079"></li>
+    <li id="cffc223" style="background: #ffc223"></li>
+    <li id="cffdb59" style="background: #ffdb59"></li>
+    <li id="cf2c478" style="background: #f2c478"></li>
+  </ul>
+
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('.button').click(function(e) {
+      $('.all').quicksand( $('.warm li'), {
+        duration: 3000,
+        attribute: 'id',
+        easing: 'easeInOutQuad'
+      });
+      e.preventDefault();
+    });
+  });
+</script>
+
+      
+<h2 class="splitter">JavaScript</h2>
+
+<% code "javascript" do %>
+$(function() {
+  $('.button').click(function(e) {
+    $('.all').quicksand( $('.warm li'), {
+      duration: 3000,
+      attribute: 'id',
+      easing: 'easeInOutQuad'
+    });
+    e.preventDefault();
+  });
+});
+<% end %>
+
+<h2 class="splitter">HTML</h2>
+      
+<% code "html" do %>
+<ul class="colors all">
+  <li id="c463033" style="background: #463033"></li>
+  <li id="c77343d" style="background: #77343d"></li>
+  <li id="ce83f2f" style="background: #e83f2f"></li>
+  <li id="cffc223" style="background: #ffc223"></li>
+  <li id="cffdb59" style="background: #ffdb59"></li>
+  <li id="c788b6f" style="background: #788b6f"></li>
+  <li id="c486a5e" style="background: #486a5e"></li>
+  <li id="c289539" style="background: #289539"></li>
+  <li id="c174876" style="background: #174876"></li>
+</ul>
+
+<ul class="colors warm">
+  <li id="c62164e" style="background: #62164e"></li>
+  <li id="c86286e" style="background: #86286e"></li>
+  <li id="cda79c2" style="background: #da79c2"></li>
+  <li id="cf39079" style="background: #f39079"></li>
+  <li id="ce83f2f" style="background: #e83f2f"></li>
+  <li id="cffc223" style="background: #ffc223"></li>
+  <li id="cffdb59" style="background: #ffdb59"></li>
+  <li id="cf2c478" style="background: #f2c478"></li>
+</ul>
+<% end %>
+
+<h2 class="splitter">CSS</h2>
+
+<% code "css" do %>
+.demo .colors {
+  overflow: hidden;
+  margin: 20px 0;
+  padding-left: 55px;
+}
+
+.demo .colors li {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 10px;
+  float: left;
+  border: 16px solid;
+}
+
+.demo .warm {
+  display: none;
+}
+
+<% end %>

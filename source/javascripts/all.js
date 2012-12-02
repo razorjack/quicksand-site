@@ -1,0 +1,5 @@
+//= require "jquery"
+//= require "jquery.easing.js"
+//= require "jquery-css-transform"
+//= require "jquery-animate-css-rotate-scale"
+//= require "jquery.quicksand.js"
