@@ -1,6 +1,6 @@
 # What is this?
 
-This repository contains source code for Quicksand website. Powered by [middleman](http://middlemanapp.com).
+This repository contains source code for [Quicksand website](http://razorjack.net/quicksand/). Powered by [middleman](http://middlemanapp.com).
 
 # How to run this code locally
 
