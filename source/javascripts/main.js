@@ -56,7 +56,8 @@ $(function() {
   var $preferences = {
     duration: 800,
     easing: 'easeInOutQuad',
-    adjustHeight: false
+    adjustHeight: 'auto',
+    useScaling: true
   };
   
   var $list = $('#list');
