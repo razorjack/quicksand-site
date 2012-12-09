@@ -70,6 +70,7 @@ $(function() {
     $.get( $(this).attr('href'), function(data) {
       $('.webbies').quicksand( $(data).find('li'),
         {
+          useScaling: true,
           adjustHeight: 'dynamic',
           attribute: function(v) {
             return $(v).find('img').attr('src');

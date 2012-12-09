@@ -65,7 +65,8 @@
       $('.all').quicksand( $('.warm li'), {
         duration: 3000,
         attribute: 'id',
-        easing: 'easeInOutQuad'
+        easing: 'easeInOutQuad',
+        useScaling: true
       });
       e.preventDefault();
     });
@@ -80,8 +81,7 @@ $(function() {
   $('.button').click(function(e) {
     $('.all').quicksand( $('.warm li'), {
       duration: 3000,
-      attribute: 'id',
-      easing: 'easeInOutQuad'
+      attribute: 'id'
     });
     e.preventDefault();
   });

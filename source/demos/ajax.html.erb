@@ -48,7 +48,7 @@
     $(function() {
       $('#load-webbies a.button').click(function(e) {
         $.get( $(this).attr('href'), function(data) {
-            $('.webbies').quicksand( $(data).find('li'), {adjustHeight: 'dynamic'} );
+            $('.webbies').quicksand( $(data).find('li'), {adjustHeight: 'dynamic', useScaling: true} );
         });	
         e.preventDefault();	
       });
