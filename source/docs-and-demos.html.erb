@@ -109,6 +109,11 @@ $('#source').quicksand( $('#destination li'), {
       <td>Adjusts the height of container to fit all the items, <code>'auto'</code> for automatically adjusting before or after the animation (determined automatically), <code>'dynamic'</code> for height adjustment animation, <code>false</code> for keeping the height constant.</td>
     </tr>
     <tr>
+      <td><code>adjustWidth</code></td>
+      <td><code>'auto'</code></td>
+      <td>Adjusts the width of container to fit all the items, <code>'auto'</code> for automatically adjusting before or after the animation (determined automatically), <code>'dynamic'</code> for width adjustment animation, <code>false</code> for keeping the width constant.</td>
+    </tr>
+    <tr>
       <td><code>attribute</code></td>
       <td><code>'data-id'</code></td>
       <td>Attribute used to match items in collections. You can provide custom function to extract unique values (see the <a href="#examples">demos</a>)</td>
@@ -130,15 +135,30 @@ $('#source').quicksand( $('#destination li'), {
     </tr>
     <tr>
       <td><code>useScaling</code></td>
+      <td><code>false</code></td>
+      <td>Use scaling (CSS3 transform) animation. Requires to include <a href="http://www.zachstronaut.com/posts/2009/08/07/jquery-animate-css-rotate-scale.html">this plugin</a> to your project.</td>
+    </tr>
+    <tr>
+      <td><code>retainExisting</code></td>
       <td><code>true</code></td>
-      <td>Use scaling (CSS3 transform) animation. Requires to include <a href="http://www.zachstronaut.com/posts/2009/08/07/jquery-animate-css-rotate-scale.html">this plugin</a> to your project. Turned off automatically if you did not.</td>
+      <td>By default, Quicksand reuses existing DOM elements instead of replacing them (new in v1.3). Set this option to <code>false</code> to brutally replace the collection with a fresh one when the animation ends. This in most cases shouldn't be required, but might be useful in some circumstances.</td>
+    </tr>
+    <tr>
+      <td><code>maxWidth</code></td>
+      <td><code>0</code></td>
+      <td>Hide all elements whose <code>left</code> CSS property is greater than this value. Setting this option to <code>0</code> turns this behavior off.</td>
+    </tr>
+    <tr>
+      <td><code>atomic</code></td>
+      <td><code>false</code></td>
+      <td>Set to <code>true</code> to swap the DOM elements immediately. Turning this option on will make the animation look less effective but will make your life easier if you intend to modify the DOM during the animation.</td>
     </tr>
   </tbody>
 </table>
 
 <h3 class="header" id="performance">Performance</h3>
 
-<p><strong>Version 1.2</strong> features major performance tweaks out of the box. To improve performance, you can:</p>
+<p><strong>Version 1.2</strong> brought major performance tweaks out of the box. To improve performance, you can:</p>
 <ol>
   <li>turn off <code>useScaling</code> option to stop using CSS3 transforms in the animation</li>
   <li>stop using <code>adjustHeight: 'dynamic'</code> in favor of <code>false</code> or <code>'auto'</code>.</li>
