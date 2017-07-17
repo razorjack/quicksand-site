@@ -55,6 +55,7 @@ set :relative_links, true
 
 activate :sprockets
 activate :syntax
+activate :asset_hash
 
 # Build-specific configuration
 configure :build do
@@ -63,9 +64,6 @@ configure :build do
 
   # Minify Javascript on build
   activate :minify_javascript
-
-  # Enable cache buster
-  activate :cache_buster
 
   # Use relative URLs
   activate :relative_assets
