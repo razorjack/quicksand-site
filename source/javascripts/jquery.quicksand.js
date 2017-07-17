@@ -1,6 +1,6 @@
 /*
 
-Quicksand 1.3
+Quicksand 1.4
 
 Reorder and filter items with a nice shuffling animation.
 
@@ -17,6 +17,20 @@ Github site: http://github.com/razorjack/quicksand
  */
 
 (function($) {
+  
+  var cloneWithCanvases = function(jqueryObject) {
+      var clonedJqueryObject =  jqueryObject.clone();
+      var canvases = jqueryObject.find('canvas');
+      if (canvases.length) {
+          var clonedCanvases = clonedJqueryObject.find('canvas');
+          clonedCanvases.each(function(index) {
+              var context = this.getContext('2d');
+              context.drawImage(canvases.get(index), 0, 0);
+          });
+      }
+      return clonedJqueryObject;
+  };
+    
   $.fn.quicksand = function(collection, customOptions) {
     var options = {
       duration : 750,
@@ -34,11 +48,23 @@ Github site: http://github.com/razorjack/quicksand
       dy : 0,
       maxWidth : 0,
       retainExisting : true         // disable if you want the collection of items to be replaced completely by incoming items.
-    };
+    },
+
+    nativeScaleSupport = (function() {
+      var prefixes = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' '),
+        el = document.createElement('div');
+      for (var i = 0; i < prefixes.length; i++) {
+        if (typeof el.style[prefixes[i]] != 'undefined') {
+          return true;
+        }
+      }
+      return false;
+    })();
+
     $.extend(options, customOptions);
 
-    // Got IE and want scaling effect? Kiss my ass.
-    if ($.browser.msie || (typeof ($.fn.scale) == 'undefined')) {
+    // Can the browser do scaling?
+    if (!nativeScaleSupport || (typeof ($.fn.scale) == 'undefined')) {
       options.useScaling = false;
     }
 
@@ -57,7 +83,7 @@ Github site: http://github.com/razorjack/quicksand
       if (typeof(options.attribute) == 'function') {
         $collection = $(collection);
       } else {
-        $collection = $(collection).filter('[' + options.attribute + ']').clone(); // destination (target) collection
+        $collection = cloneWithCanvases($(collection).filter('[' + options.attribute + ']')); // destination (target) collection
       }
       var $sourceParent = $(this); // source, the visible container of source collection
       var sourceHeight = $(this).css('height'); // used to keep height and document flow during the animation
@@ -71,7 +97,7 @@ Github site: http://github.com/razorjack/quicksand
       var width = $($source).innerWidth(); // need for the responsive design
 
       // Replace the collection and quit if IE6
-      if ($.browser.msie && parseInt($.browser.version, 10) < 7) {
+      if (navigator.userAgent.match(/msie [6]/i)) {
         $sourceParent.html('').append($collection);
         return;
       }
@@ -217,7 +243,7 @@ Github site: http://github.com/razorjack/quicksand
       });
 
       // create temporary container with destination collection
-      var $dest = $($sourceParent).clone();
+      var $dest = cloneWithCanvases($($sourceParent));
       var rawDest = $dest.get(0);
       rawDest.innerHTML = '';
       rawDest.setAttribute('id', '');
@@ -330,13 +356,13 @@ Github site: http://github.com/razorjack/quicksand
           } else {
             animationQueue.push({
               element : $(this),
+              style : {
+                top : $(this).offset().top,
+                left : $(this).offset().left,
+                opacity : ""
+              },
               animation : {
                 opacity : '0.0',
-                style : {
-                  top : $(this).offset().top,
-                  left : $(this).offset().left,
-                  opacity : ""
-                },
                 scale : '0.0'
               }
             });
@@ -379,7 +405,7 @@ Github site: http://github.com/razorjack/quicksand
           }
 
           // Let's create it
-          var d = destElement.clone();
+          var d = cloneWithCanvases(destElement);
           var rawDestElement = d.get(0);
           rawDestElement.style.position = 'absolute';
           rawDestElement.style.margin = '0';
@@ -395,7 +421,7 @@ Github site: http://github.com/razorjack/quicksand
           d.css('opacity', 0.0); // IE
 
           if (options.useScaling) {
-            d.css('transform', 'scale(0.0)');
+            d.scale(0.0);
           }
           d.appendTo($sourceParent);
 
@@ -440,4 +466,4 @@ Github site: http://github.com/razorjack/quicksand
       }
     });
   };
-})(jQuery);
+}(jQuery));
