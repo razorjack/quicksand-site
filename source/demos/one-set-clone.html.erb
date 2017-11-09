@@ -117,6 +117,8 @@
   $(function() {
   
     // bind radiobuttons in the form
+    var filterTypeSelector = '#filter input[name="type"]';
+    var filterSortSelector = '#filter input[name="sort"]';
     var $filterType = $('#filter input[name="type"]');
     var $filterSort = $('#filter input[name="sort"]');
   
@@ -128,14 +130,16 @@
 
     // attempt to call Quicksand on every form change
     $filterType.add($filterSort).change(function(e) {
-      if ($($filterType+':checked').val() == 'all') {
+      if ($(filterTypeSelector + ':checked').val() == 'all') {
         var $filteredData = $data.find('li');
       } else {
-        var $filteredData = $data.find('li[data-type=' + $($filterType+":checked").val() + ']');
+        var $filteredData = $data.find(
+          'li[data-type=' + $(filterTypeSelector + ":checked").val() + ']'
+        );
       }
     
       // if sorted by size
-      if ($('#filter input[name="sort"]:checked').val() == "size") {
+      if ($(filterSortSelector + ':checked').val() == "size") {
         var $sortedData = $filteredData.sorted({
           by: function(v) {
             return parseFloat($(v).find('span[data-type=size]').text());
@@ -200,27 +204,29 @@ $(function() {
 
   // attempt to call Quicksand on every form change
   $filterType.add($filterSort).change(function(e) {
-    if ($($filterType+':checked').val() == 'all') {
+    if ($(filterTypeSelector + ':checked').val() == 'all') {
       var $filteredData = $data.find('li');
     } else {
-      var $filteredData = $data.find('li[data-type=' + $($filterType+":checked").val() + ']');
+      var $filteredData = $data.find(
+        'li[data-type=' + $(filterTypeSelector + ":checked").val() + ']'
+      );
     }
 
     // if sorted by size
-    if ($('#filter input[name="sort"]:checked').val() == "size") {
+    if ($(filterSortSelector + ':checked').val() == "size") {
       var $sortedData = $filteredData.sorted({
         by: function(v) {
           return parseFloat($(v).find('span[data-type=size]').text());
         }
       });
     } else {
-      // if sorted by name
+    // if sorted by name
       var $sortedData = $filteredData.sorted({
         by: function(v) {
           return $(v).find('strong').text().toLowerCase();
         }
       });
-    }   
+    }
 
     // finally, call quicksand
     $applications.quicksand($sortedData, {

@@ -1,32 +1,32 @@
 (function($) {
-	$.fn.sorted = function(customOptions) {
-		var options = {
-			reversed: false,
-			by: function(a) {
-				return a.text();
-			}
-		};
-		$.extend(options, customOptions);
-	
-		$data = $(this);
-		arr = $data.get();
-		arr.sort(function(a, b) {
-			
-		   	var valA = options.by($(a));
-		   	var valB = options.by($(b));
-			if (options.reversed) {
-				return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;				
-			} else {		
-				return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;	
-			}
-		});
-		return $(arr);
-	};
+  $.fn.sorted = function(customOptions) {
+    var options = {
+      reversed: false,
+      by: function(a) {
+        return a.text();
+      }
+    };
+    $.extend(options, customOptions);
+
+    $data = $(this);
+    arr = $data.get();
+    arr.sort(function(a, b) {
+
+      var valA = options.by($(a));
+      var valB = options.by($(b));
+      if (options.reversed) {
+        return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;
+      } else {
+        return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;
+      }
+    });
+    return $(arr);
+  };
 
 })(jQuery);
 
 $(function() {
-  
+
   var read_button = function(class_names) {
     var r = {
       selected: false,
@@ -42,39 +42,39 @@ $(function() {
     };
     return r;
   };
-  
+
   var determine_sort = function($buttons) {
     var $selected = $buttons.parent().filter('[class*="selected-"]');
     return $selected.find('a').attr('data-value');
   };
-  
+
   var determine_kind = function($buttons) {
     var $selected = $buttons.parent().filter('[class*="selected-"]');
     return $selected.find('a').attr('data-value');
   };
-  
+
   var $preferences = {
     duration: 800,
     easing: 'easeInOutQuad',
     adjustHeight: 'auto',
     useScaling: true
   };
-  
+
   var $list = $('#list');
   var $data = $list.clone();
-  
+
   var $controls = $('ul.splitter ul');
-  
+
   $controls.each(function(i) {
-    
+
     var $control = $(this);
     var $buttons = $control.find('a');
-    
+
     $buttons.bind('click', function(e) {
-      
+
       var $button = $(this);
       var $button_container = $button.parent();
-      var button_properties = read_button($button_container.attr('class').split(' '));      
+      var button_properties = read_button($button_container.attr('class').split(' '));
       var selected = button_properties.selected;
       var button_segment = button_properties.segment;
 
@@ -82,16 +82,16 @@ $(function() {
 
         $buttons.parent().removeClass('selected-0').removeClass('selected-1').removeClass('selected-2');
         $button_container.addClass('selected-' + button_segment);
-        
+
         var sorting_type = determine_sort($controls.eq(1).find('a'));
         var sorting_kind = determine_kind($controls.eq(0).find('a'));
-        
+
         if (sorting_kind == 'all') {
           var $filtered_data = $data.find('li');
         } else {
           var $filtered_data = $data.find('li.' + sorting_kind);
         }
-        
+
         if (sorting_type == 'size') {
           var $sorted_data = $filtered_data.sorted({
             by: function(v) {
@@ -105,21 +105,21 @@ $(function() {
             }
           });
         }
-        
+
         $list.quicksand($sorted_data, $preferences);
-        
+
       }
-      
+
       e.preventDefault();
     });
-    
-  }); 
 
-  var high_performance = true;  
+  });
+
+  var high_performance = true;
   var $performance_container = $('#performance-toggle');
   var $original_html = $performance_container.html();
-  
-  $performance_container.find('a').live('click', function(e) {
+
+  $performance_container.on('click', "a", function(e) {
     if (high_performance) {
       $preferences.useScaling = false;
       $performance_container.html('CSS3 scaling turned off. Try the demo again. <a href="#toggle">Reverse</a>.');

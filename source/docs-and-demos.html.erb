@@ -131,12 +131,12 @@ $('#source').quicksand( $('#destination li'), {
     <tr>
       <td><code>enhancement</code></td>
       <td><code>function() {}</code></td>
-      <td>If you wish to integrate their visual enhancements (eg. font replacement), specify a function that refreshes or re-applies enhancement to an item during the animation.</td>
+      <td><strong>Since v1.5, this shouldn't be needed in most cases.</strong> If you wish to integrate their visual enhancements (eg. font replacement) or attach click/hover events on new sorted elements, specify a function that refreshes or re-applies enhancement to an item during the animation.</td>
     </tr>
     <tr>
       <td><code>useScaling</code></td>
       <td><code>false</code></td>
-      <td>Use scaling (CSS3 transform) animation. Requires to include <a href="http://www.zachstronaut.com/posts/2009/08/07/jquery-animate-css-rotate-scale.html">this plugin</a> to your project.</td>
+      <td>Use scaling (CSS3 transform) animation. Requires to include <a href="https://github.com/louisremi/jquery.transform.js/blob/master/jquery.transform2d.js">this plugin</a> to your project.</td>
     </tr>
     <tr>
       <td><code>retainExisting</code></td>
@@ -227,12 +227,16 @@ Ajax calls. This code can be copied &amp; used freely, but it’s not part of th
 <h2 class="splitter">FAQ</h2>
 <ol class="faq">
   <li>
+    <p class="question">Can I use use Quicksand in commercial projects?</p>
+    <p>Yes! You can use it commercially without limitation, you can even use it in website templates you sell on ThemeForest.</p>
+  </li>
+  <li>
     <p class="question">I get an error <q>TypeError: Result of expression ... easing ...  [undefined] is not a function</q>. What happened?</p>
     <p>You are using easing effect that's not built-in and forgot to include jQuery.easing plugin. You can <a href="http://gsgd.co.uk/sandbox/jquery/easing/">download it from its home page</a>. Alternatively, remove easing from your Quicksand options to stick with the default <code>swing</code> effect. It's not that bad!</p>
   </li>
   <li>
     <p class="question">I would like to filter my items in a different way. How can I do it?</p>
-    <p>There's only one thing that Quicksand can do and it's performing the animation. <strong>Quicksand does not filter and does not do any sorting</strong>. It's up to you to provide initial collection and destination collection. Yeah, a little custom programming is required.</p>
+    <p>There's only one thing that Quicksand can do and it's performing the animation. <strong>Quicksand does not filter and does not do any sorting</strong>. It's up to you to provide initial collection and destination collection. A little bit of custom programming is required.</p>
   </li>
   <li>
     <p class="question">How can I use Quicksand with radio buttons instead of links? I want to combine criteria when filtering my collection.</p>
@@ -240,7 +244,7 @@ Ajax calls. This code can be copied &amp; used freely, but it’s not part of th
   </li>
   <li>
     <p class="question">I'm a designer and I don't know how to start...</p>
-    <p>This plugin requires basic programming skills: using jQuery selectors and callbacks is a minimum knowledge required to implement it on your website. Copy-paste is cool but sorry dude, not this time. Good luck studying jQuery, it's not that hard!</p>
+    <p>This plugin requires basic programming skills: using jQuery selectors and callbacks is a minimum knowledge required to implement it on your website. Copy-paste is cool but sorry, not this time. Good luck studying jQuery, it's not that hard!</p>
   </li>
 </ol>
     
@@ -250,28 +254,15 @@ Ajax calls. This code can be copied &amp; used freely, but it’s not part of th
 <h3 class="header">Requirements and dependencies</h3>
 
 <ul>
-  <li class="spaced">Required: <strong>jQuery 1.3+</strong>, works with jQuery 1.10 and 2.0</li>
-  <li>Extra: Use <a href="http://gsgd.co.uk/sandbox/jquery/easing/">jQuery Easing</a> for additional easing options (the best – <code>easeInOutQuad</code>)</li>
-  <li>Extra: Use <a href="https://raw.github.com/zachstronaut/jquery-css-transform/master/jquery-css-transform.js">jquery-css-transform.js
-      </a> and <a href="https://raw.github.com/zachstronaut/jquery-animate-css-rotate-scale/master/jquery-animate-css-rotate-scale.js">jquery-animate-css-rotate-scale.js
-    </a> for additional CSS3 scaling animation; works fine without this plugin (utilizes
+  <li class="spaced">Required: jQuery. Any version equal or greater than 1.6.1 should work. This includes jQuery 2.0+ and jQuery 3.0+.</li>
+  <li>Optional: Use <a href="http://gsgd.co.uk/sandbox/jquery/easing/">jQuery Easing</a> for additional easing options (the best – <code>easeInOutQuad</code>)</li>
+  <li>Optional: Use <a href="https://github.com/louisremi/jquery.transform.js/blob/master/jquery.transform2d.js">jquery.transform2d.js</a> for additional CSS3 scaling animation; works fine without this plugin (utilizes
   fade efect instead)</li>
 </ul>
 
 <h3 class="header">Browser compatibility</h3>
 
-<p>Tested under:</p>
-
-<ul>
-  <li>Safari 4+</li>
-  <li>Chrome 4+</li>
-  <li>Firefox 3.5+, Firefox 3.0</li>
-  <li>Opera 10.15+</li>
-  <li>Internet Explorer 7</li>
-  <li>Internet Explorer 8</li>
-</ul>
-
-<p><strong>No Internet Explorer 6 support</strong> is planned. Ever.</p>
+<p>The plugin should work in all browsers, including versions a few years behind. Internet Explorer 7 is the lowest supported version of IE.</p>
 
 <h3 class="header">Extra credits</h3>
 
@@ -280,5 +271,5 @@ demos and creating this stunning design.</p>
 
 <h3 class="header">Licensing</h3>
 
-<p>Copyright © 2010 Jacek Galanciak, released under both <a href="http://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt">MIT</a> and <a href="http://github.com/jquery/jquery/blob/master/GPL-LICENSE.txt">GPL version 2</a> license.</p>
+<p>Copyright © 2010 Jacek Galanciak, released under both <a href="https://github.com/razorjack/quicksand/blob/master/MIT-LICENSE.txt">MIT</a> and <a href="https://github.com/razorjack/quicksand/blob/master/GPL-LICENSE.txt">GPL version 2</a> license.</p>
 
