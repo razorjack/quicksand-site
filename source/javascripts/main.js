@@ -56,7 +56,7 @@ $(function() {
   var $preferences = {
     duration: 800,
     easing: 'easeInOutQuad',
-    adjustHeight: 'auto',
+    adjustHeight: 'dynamic',
     useScaling: true
   };
 
