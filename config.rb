@@ -76,3 +76,6 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end
+
+
+page '/error.html', directory_index: false
