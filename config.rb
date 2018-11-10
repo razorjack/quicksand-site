@@ -24,9 +24,21 @@
 # page "/path/to/file.html", :layout => :otherlayout
 #
 # A path which all have the same layout
-with_layout false do
-  page "demos/ajax/*"
-end
+# with_layout false do
+#   page "demos/ajax/*"
+# end
+
+# [
+#   'ajax-developers',
+#   'ajax-brits',
+#   'ajax-legends',
+#   'ajax-designers',
+#   'ajax-westerners'
+# ].each do |p|
+#   page "demos/#{p}.html.erb", layout: false
+# end
+page "demos/ajax-*", layout: false
+
 # Proxy (fake) files
 # page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
 #   @which_fake_page = "Rendering a fake page with a variable"
