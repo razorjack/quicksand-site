@@ -78,4 +78,4 @@ configure :build do
 end
 
 
-page '/error.html', directory_index: false
+page '/error.html', directory_index: false, layout: false
